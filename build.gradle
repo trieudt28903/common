@@ -1,0 +1,54 @@
+plugins {
+    id 'java-library'                     // dùng java-library thay vì java
+    id 'maven-publish'                    // để publish JAR
+}
+
+group = 'com.example'
+version = '1.0.0'
+description = 'Common Service Library'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    withJavadocJar()   // xuất kèm javadoc.jar
+    withSourcesJar()   // xuất kèm sources.jar
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring
+    api 'org.springframework.boot:spring-boot-starter-web'
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        // Local Maven (xài trong máy ông)
+        mavenLocal()
+
+        // Nếu muốn đẩy lên GitHub / Nexus thì thêm cấu hình repo ở đây
+        // maven {
+        //     url = uri("https://maven.pkg.github.com/<owner>/<repo>")
+        //     credentials {
+        //         username = System.getenv("GITHUB_ACTOR")
+        //         password = System.getenv("GITHUB_TOKEN")
+        //     }
+        // }
+    }
+}
