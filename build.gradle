@@ -20,17 +20,13 @@ repositories {
 }
 
 dependencies {
-    // Spring
-    api 'org.springframework.boot:spring-boot-starter-web'
-    api 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-    // Lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
-    // Test
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    api 'org.springframework.boot:spring-boot-starter-web:3.5.6'
+    api 'org.springframework.boot:spring-boot-starter-data-jpa:3.5.6'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.5.6'
 }
+
 
 publishing {
     publications {
@@ -44,7 +40,7 @@ publishing {
 
         // Nếu muốn đẩy lên GitHub / Nexus thì thêm cấu hình repo ở đây
          maven {
-             url = uri("https://maven.pkg.github.com/trieuld28903/common")
+             url = uri("https://maven.pkg.github.com/trieudt28903/common")
              credentials {
                  username = System.getenv("GITHUB_USER")
                  password = System.getenv("GITHUB_TOKEN")
