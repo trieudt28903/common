@@ -43,12 +43,12 @@ publishing {
         mavenLocal()
 
         // Nếu muốn đẩy lên GitHub / Nexus thì thêm cấu hình repo ở đây
-        // maven {
-        //     url = uri("https://maven.pkg.github.com/<owner>/<repo>")
-        //     credentials {
-        //         username = System.getenv("GITHUB_ACTOR")
-        //         password = System.getenv("GITHUB_TOKEN")
-        //     }
-        // }
+         maven {
+             url = uri("https://maven.pkg.github.com/<owner>/<repo>")
+             credentials {
+                 username = System.getenv("GITHUB_ACTOR")
+                 password = System.getenv("GITHUB_TOKEN")
+             }
+         }
     }
 }
