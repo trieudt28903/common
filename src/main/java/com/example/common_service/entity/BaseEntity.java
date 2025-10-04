@@ -19,6 +19,9 @@ public abstract class BaseEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    private Long createdBy;
+    private Long updatedBy;
+
     // gọi trước khi insert
     @PrePersist
     public void prePersist() {
